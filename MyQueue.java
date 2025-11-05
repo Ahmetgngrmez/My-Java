@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class MyQueue<E> {
     private E[] data;
-    private int size = 0;
-    private int first = 0;
+    private int size = 0; // element count
+    private int first = 0; // index of front element
 
     public MyQueue(int capacity) {
         data = (E[]) new Object[capacity];
@@ -15,21 +15,21 @@ public class MyQueue<E> {
 
     public E peek() {
         if (isEmpty()) return null;
-        return data[first];
+        return data[first]; // front element
     }
 
     public E dequeue() {
         if (isEmpty()) return null;
         E x = data[first];
         data[first] = null;
-        first = (first + 1) % data.length;
+        first = (first + 1) % data.length; // circular shift
         size--;
         return x;
     }
 
     public void enqueue(E e) {
         ensureCapacity();
-        int rear = (first + size) % data.length;
+        int rear = (first + size) % data.length; // rear index
         data[rear] = e;
         size++;
     }
@@ -39,11 +39,12 @@ public class MyQueue<E> {
         int oldCap = data.length;
         int newCap = oldCap * 2;
         E[] newData = (E[]) new Object[newCap];
+        // copy and re-align
         for (int i = 0; i < size; i++) {
             newData[i] = data[(first + i) % oldCap];
         }
         data = newData;
-        first = 0;
+        first = 0; // reset front
         System.out.println("Queue capacity: " + oldCap + " -> " + newCap);
     }
 
@@ -56,6 +57,7 @@ public class MyQueue<E> {
             sb.append(data[(first + i) % data.length]);
         }
         sb.append("]");
-        return sb.toString() + " and Inner Array: " + Arrays.toString(data);
+        // full array contents
+        return sb.toString() + " and Inner Array: " + Arrays.toString(data); 
     }
 }
