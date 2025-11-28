@@ -54,7 +54,7 @@ public class CreditCard{
     public static void main(String[] args){
         CreditCard[] wallet = new CreditCard[3];
 
-        wallet[0]=new CreditCard("ahmet", "akbank", "5555 4444 3333", 5000);
+        wallet[0]=new CreditCard("Ahmet", "akbank", "5555 4444 3333", 5000);
         wallet[1]=new CreditCard("Ahmet", "denizbank", "5555 2222 3333", 3500);
         wallet[2]=new CreditCard("Ahmet", "yapıkedi", "5555 1111 3333", 2500,300);
 
